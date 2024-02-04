@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../assets/logo1.png";
 import Image from "next/image";
 import {
@@ -19,8 +19,15 @@ const Navbar = () => {
   const handleShow = () => {
     setNav((prev) => !prev);
   };
+
+  useEffect(() => {
+    nav
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [nav]);
+
   return (
-    <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300">
+    <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300 z-50">
       <div>
         <Image src={Logo} alt="Logo Image" style={{ width: "50px" }} />
       </div>
@@ -49,36 +56,58 @@ const Navbar = () => {
       </div>
       {/* mobile menu */}
 
-      {nav && (
-        <ul className="absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center">
-          <li className="py-6 text-4xl">
-            <Unlink
-              onClick={handleShow}
-              to="home"
-              smooth={true}
-              duration={500}
-              className="p-2"
-            >
-              Home
-            </Unlink>
-          </li>
-          <li className="py-6 text-4xl">
-            <Unlink to="about" smooth={true} duration={500} className="p-2">
-              About
-            </Unlink>
-          </li>
-          <li className="py-6 text-4xl">
-            <Unlink to="skills" smooth={true} duration={500} className="p-2">
-              Skills
-            </Unlink>
-          </li>
-          <li className="py-6 text-4xl">
-            <Unlink to="contact" smooth={true} duration={500} className="p-2">
-              Contact
-            </Unlink>
-          </li>
-        </ul>
-      )}
+      <ul
+        className={
+          !nav
+            ? "hidden"
+            : "absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center "
+        }
+      >
+        <li className="py-6 text-4xl">
+          <Unlink
+            onClick={handleShow}
+            to="home"
+            smooth={true}
+            duration={500}
+            className="p-2"
+          >
+            Home
+          </Unlink>
+        </li>
+        <li className="py-6 text-4xl">
+          <Unlink
+            onClick={handleShow}
+            to="about"
+            smooth={true}
+            duration={500}
+            className="p-2"
+          >
+            About
+          </Unlink>
+        </li>
+        <li className="py-6 text-4xl">
+          <Unlink
+            onClick={handleShow}
+            to="skills"
+            smooth={true}
+            duration={500}
+            className="p-2"
+          >
+            Skills
+          </Unlink>
+        </li>
+        <li className="py-6 text-4xl">
+          <Unlink
+            onClick={handleShow}
+            to="contact"
+            smooth={true}
+            duration={500}
+            className="p-2"
+          >
+            Contact
+          </Unlink>
+        </li>
+      </ul>
 
       {/* social icons */}
       <div className="hidden md:flex fixed flex-col top-[35%] left-0">
