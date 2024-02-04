@@ -1,5 +1,7 @@
 import React from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
+import Link from "next/link";
+// import { Link as Portia } from "react-scroll";
 const Home = () => {
   return (
     <div className="bg-[#0a192f] w-full h-screen" name="home">
@@ -16,12 +18,14 @@ const Home = () => {
           interfaces and web applications.
         </p>
         <div>
-          <button className="text-white group border-2 px-6 py-2 my-2 flex items-center hover:bg-pink-600 hover:border-pink-600">
-            View Work
-            <span className="group-hover:rotate-90 duration-300">
-              <HiArrowNarrowRight className="ml-3" />
-            </span>
-          </button>
+          <Link href={"/#work"}>
+            <button className="text-white group border-2 px-6 py-2 my-2 flex items-center hover:bg-pink-600 hover:border-pink-600">
+              View Work
+              <span className="group-hover:rotate-90 duration-300">
+                <HiArrowNarrowRight className="ml-3" />
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
