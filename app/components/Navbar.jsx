@@ -12,6 +12,7 @@ import {
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import Link from "next/link";
+import { Link as Unlink } from "react-scroll";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
 
@@ -27,10 +28,19 @@ const Navbar = () => {
       {/* menu */}
 
       <ul className="hidden md:flex">
-        <li>Home</li>
-        <li>About</li>
-        <li>Skills</li>
-        <li>Contact</li>
+        <Unlink to="home" smooth={true} duration={500} className="p-2">
+          Home
+        </Unlink>
+        {/* <li>Home</li> */}
+        <Unlink to="about" smooth={true} duration={500} className="p-2">
+          About
+        </Unlink>
+        <Unlink to="skills" smooth={true} duration={500} className="p-2">
+          Skills
+        </Unlink>
+        <Unlink to="contact" smooth={true} duration={500} className="p-2">
+          Contact
+        </Unlink>
       </ul>
 
       {/* hamburger */}
@@ -41,10 +51,32 @@ const Navbar = () => {
 
       {nav && (
         <ul className="absolute top-0 left-0 w-full h-screen bg-[#0a192f] flex flex-col justify-center items-center">
-          <li className="py-6 text-4xl">Home</li>
-          <li className="py-6 text-4xl">About</li>
-          <li className="py-6 text-4xl">Skills</li>
-          <li className="py-6 text-4xl">Contact</li>
+          <li className="py-6 text-4xl">
+            <Unlink
+              onClick={handleShow}
+              to="home"
+              smooth={true}
+              duration={500}
+              className="p-2"
+            >
+              Home
+            </Unlink>
+          </li>
+          <li className="py-6 text-4xl">
+            <Unlink to="about" smooth={true} duration={500} className="p-2">
+              About
+            </Unlink>
+          </li>
+          <li className="py-6 text-4xl">
+            <Unlink to="skills" smooth={true} duration={500} className="p-2">
+              Skills
+            </Unlink>
+          </li>
+          <li className="py-6 text-4xl">
+            <Unlink to="contact" smooth={true} duration={500} className="p-2">
+              Contact
+            </Unlink>
+          </li>
         </ul>
       )}
 

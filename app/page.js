@@ -4,6 +4,7 @@ import HomeMain from "./components/Home";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Work from "./components/Work";
+import Contact from "./components/Contact";
 export default function Home() {
   return (
     <main className="">
@@ -12,7 +13,7 @@ export default function Home() {
       <About />
       <Skills />
       <Work />
-      {/* <h1 className="text-2xl font-bold">Hello</h1> */}
+      <Contact />
     </main>
   );
 }
